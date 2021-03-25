@@ -23,6 +23,12 @@ public class ProductPageHelper extends PageBase {
     @FindBy(className = "basket-mini")
     WebElement basketTotal;
 
+    @FindBy(css = ".btn-group a.btn.btn-default")
+    WebElement viewBasketButton;
+
+    @FindBy (css = ".product_main h1")
+    WebElement productName;
+
     public ProductPageHelper(WebDriver driver) {
         super(driver);
     }
@@ -51,5 +57,13 @@ public class ProductPageHelper extends PageBase {
         Double totalBasket = Double.parseDouble(basketTotal.getText().split(" ")[2].substring(1, 6));
         return totalBasket;
 
+    }
+
+    public void clickOnViewBasketButton() {
+        viewBasketButton.click();
+    }
+
+    public String getProductName() {
+        return productName.getText();
     }
 }

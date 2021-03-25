@@ -35,11 +35,12 @@ public class ProductPageTest extends TestBase {
     public void productPriceInBasketValidation(){
         homePageHelper.selectSubMenuBooks();
         homePageHelper.waitUntilProductListIsDisplayed();
-        homePageHelper.selectProductInListByNumber(1);
+        homePageHelper.selectProductInListByNumber(3);
         Double price = productPageHelper.getProductPrice();
+        System.out.println("Price: " + price);
         productPageHelper.clickOnAddToBasketButton();
         Double basketTotal = productPageHelper.getBasketTotal();
-        System.out.println(basketTotal);
+        System.out.println("Basket total: " + basketTotal);
         Assert.assertEquals(price, basketTotal);
 
     }
