@@ -32,6 +32,12 @@ public class HomePageHelper extends PageBase {
     @FindBy(className = "product_pod")
     List<WebElement> booksList;
 
+    @FindBy(className = "alert-success")
+    WebElement alertRegistrationSuccess;
+
+    @FindBy(css = "section.well .sub-header")
+    WebElement welcomeMessage;
+
 
     public HomePageHelper(WebDriver driver) {
         super(driver);
@@ -89,5 +95,18 @@ public class HomePageHelper extends PageBase {
             e.printStackTrace();
             System.out.println("Number of product must be > 0!!!");
         }
+    }
+
+    public void clickOnLoginOrRegisterButton() {
+        loginLink.click();
+    }
+
+    public boolean successRegistrationMessageIsDisplayed() {
+        return alertRegistrationSuccess.isDisplayed();
+
+    }
+
+    public void waitUntilHomePageIsLoaded() {
+        waitUntilElementVisible(welcomeMessage, 60);
     }
 }
